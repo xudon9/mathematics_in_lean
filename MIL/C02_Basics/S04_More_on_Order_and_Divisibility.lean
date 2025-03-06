@@ -39,9 +39,39 @@ example : min a b = min b a := by
     apply min_le_left
 
 example : max a b = max b a := by
-  sorry
+  have h (x y : ℝ): max x y ≤ max y x := by
+    apply max_le
+    apply le_max_right
+    apply le_max_left
+  apply le_antisymm
+  apply h
+  apply h
+
 example : min (min a b) c = min a (min b c) := by
-  sorry
+  apply le_antisymm
+  · apply le_min
+    -- show min (min a b) c ≤ a
+    apply le_trans
+    repeat
+      apply min_le_left
+    -- show min (min a b) c ≤ min b c
+    apply le_min
+    apply le_trans
+    apply min_le_left
+    apply min_le_right
+    apply min_le_right
+  · apply le_min
+    -- show min a (min b c) ≤ min a b
+    apply le_min
+    apply min_le_left
+    apply le_trans
+    apply min_le_right
+    apply min_le_left
+    -- show min a (min b c) ≤ c
+    apply le_trans
+    apply min_le_right
+    apply min_le_right
+
 theorem aux : min a b + c ≤ min (a + c) (b + c) := by
   sorry
 example : min a b + c = min (a + c) (b + c) := by
