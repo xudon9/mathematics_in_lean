@@ -73,9 +73,16 @@ example : min (min a b) c = min a (min b c) := by
     apply min_le_right
 
 theorem aux : min a b + c ≤ min (a + c) (b + c) := by
-  sorry
+  apply le_min
+  · apply add_le_add_right
+    apply min_le_left
+  · apply add_le_add_right
+    apply min_le_right
+
 example : min a b + c = min (a + c) (b + c) := by
-  sorry
+  apply le_antisymm
+  · apply aux
+  sorry -- TODO
 #check (abs_add : ∀ a b : ℝ, |a + b| ≤ |a| + |b|)
 
 example : |a| - |b| ≤ |a - b| :=
@@ -110,5 +117,3 @@ variable (m n : ℕ)
 example : Nat.gcd m n = Nat.gcd n m := by
   sorry
 end
-
-
