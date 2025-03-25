@@ -36,16 +36,58 @@ variable (x y z : α)
 #check (sup_le : x ≤ z → y ≤ z → x ⊔ y ≤ z)
 
 example : x ⊓ y = y ⊓ x := by
-  sorry
+  /- apply inf_comm -/
+  have h (a b : α) : a ⊓ b ≤ b ⊓ a := by
+    apply le_inf
+    · exact inf_le_right
+    · exact inf_le_left
+  apply le_antisymm
+  · apply h
+  · apply h
 
 example : x ⊓ y ⊓ z = x ⊓ (y ⊓ z) := by
-  sorry
+  /- apply inf_assoc  -/
+  have h (a b c : α) : a ⊓ b ⊓ c ≤ a ⊓ (b ⊓ c) := by
+    apply le_inf
+    · trans a ⊓ b
+      apply inf_le_left
+      apply inf_le_left
+    apply le_inf
+    · trans a ⊓ b
+      apply inf_le_left
+      apply inf_le_right
+    · apply inf_le_right
+  apply le_antisymm
+  apply h
+  rw [inf_comm, inf_comm y z, inf_comm (x ⊓ y) z, inf_comm x y]
+  apply h
 
 example : x ⊔ y = y ⊔ x := by
-  sorry
+  /- apply sup_comm  -/
+  have h (a b : α) : a ⊔ b ≤ b ⊔ a := by
+    apply sup_le
+    exact le_sup_right
+    exact le_sup_left
+  apply le_antisymm
+  apply h
+  apply h
 
 example : x ⊔ y ⊔ z = x ⊔ (y ⊔ z) := by
-  sorry
+  /- apply sup_assoc -/
+  have h (a b c : α) : a ⊔ b ⊔ c ≤ a ⊔ (b ⊔ c) := by
+    apply sup_le
+    · apply sup_le
+      exact le_sup_left
+      trans (b ⊔ c)
+      exact le_sup_left
+      exact le_sup_right
+    · trans (b ⊔ c)
+      exact le_sup_right
+      exact le_sup_right
+  apply le_antisymm
+  apply h
+  rw [sup_comm, sup_comm y z, sup_comm (x ⊔ y), sup_comm x y]
+  apply h
 
 theorem absorb1 : x ⊓ (x ⊔ y) = x := by
   apply le_antisymm
