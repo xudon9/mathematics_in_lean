@@ -1,5 +1,3 @@
-
-
 <!DOCTYPE html>
 <html class="writer-html5" lang="en" data-content_root="./">
 <head>
@@ -8,17 +6,21 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>3. Logic &mdash; Mathematics in Lean 0.1 documentation</title>
       <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=80d5e7a1" />
-      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=e59714d7" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=19f00094" />
       <link rel="stylesheet" type="text/css" href="_static/css/custom.css?v=0731ccc3" />
 
   
     <link rel="shortcut icon" href="_static/favicon.ico"/>
-      <script src="_static/jquery.js?v=5d32c60e"></script>
-      <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
-      <script src="_static/documentation_options.js?v=2709fde1"></script>
-      <script src="_static/doctools.js?v=9bcbadda"></script>
-      <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
-      <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="_static/jquery.js?v=5d32c60e"></script>
+        <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="_static/documentation_options.js?v=2709fde1"></script>
+        <script src="_static/doctools.js?v=9a2dae69"></script>
+        <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+        <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script src="_static/js/theme.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
@@ -643,9 +645,7 @@ ways to do it. For example, the <code class="docutils literal notranslate"><span
 </div>
 <p>Think of the first <code class="docutils literal notranslate"><span class="pre">obtain</span></code> instruction as matching the &#8220;contents&#8221; of <code class="docutils literal notranslate"><span class="pre">ubf</span></code>
 with the given pattern and assigning the components to the named variables.
-<code class="docutils literal notranslate"><span class="pre">rcases</span></code> and <code class="docutils literal notranslate"><span class="pre">obtain</span></code> are said to <code class="docutils literal notranslate"><span class="pre">destruct</span></code> their arguments, though
-there is a small difference in that <code class="docutils literal notranslate"><span class="pre">rcases</span></code> clears <code class="docutils literal notranslate"><span class="pre">ubf</span></code> from the context
-when it is done, whereas it is still present after <code class="docutils literal notranslate"><span class="pre">obtain</span></code>.</p>
+<code class="docutils literal notranslate"><span class="pre">rcases</span></code> and <code class="docutils literal notranslate"><span class="pre">obtain</span></code> are said to <code class="docutils literal notranslate"><span class="pre">destruct</span></code> their arguments.</p>
 <p>Lean also supports syntax that is similar to that used in other functional programming
 languages:</p>
 <div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="kd">example</span><span class="w"> </span><span class="o">(</span><span class="n">ubf</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">FnHasUb</span><span class="w"> </span><span class="n">f</span><span class="o">)</span><span class="w"> </span><span class="o">(</span><span class="n">ubg</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">FnHasUb</span><span class="w"> </span><span class="n">g</span><span class="o">)</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">FnHasUb</span><span class="w"> </span><span class="k">fun</span><span class="w"> </span><span class="n">x</span><span class="w"> </span><span class="bp">&#8614;</span><span class="w"> </span><span class="n">f</span><span class="w"> </span><span class="n">x</span><span class="w"> </span><span class="bp">+</span><span class="w"> </span><span class="n">g</span><span class="w"> </span><span class="n">x</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="kd">by</span>
